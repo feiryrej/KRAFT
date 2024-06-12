@@ -25,6 +25,12 @@
     npm run dev
 ```
 
+or Run both from server folder
+```bash
+    cd server
+    npm run:dev
+```
+
 ### 3. Migrating Database Schema (Prisma)
 - For server folder
 ```bash
