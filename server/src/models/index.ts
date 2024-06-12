@@ -5,4 +5,9 @@ import {
     UpdateApplicantModel
 } from './ApplicantModel';
 
-export { ApplicantModel, Applicant, CreateApplicantModel, UpdateApplicantModel };
+export {
+    ApplicantModel,
+    Applicant,
+    CreateApplicantModel,
+    UpdateApplicantModel
+};
