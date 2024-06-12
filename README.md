@@ -16,7 +16,7 @@
 ### 2. Create .env file
 - For server folder
 - Create a .env file in server folder and add the following environment variables.
-```json
+```dotenv
 DATABASE_URL="mysql://root:password@localhost:3306/kraft"
 ```
 
