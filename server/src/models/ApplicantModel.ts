@@ -1,8 +1,8 @@
 import { z } from 'zod'
-import {JobApplicationModel} from "./JobApplicationModel";
-import {EducationHistoryModel} from "./EducationHistoryModel";
-import {ReferenceModel} from "./ReferenceModel";
-import {EmploymentHistoryModel} from "./EmploymentHistoryModel";
+import { JobApplicationModel } from "./JobApplicationModel";
+import { EducationHistoryModel } from "./EducationHistoryModel";
+import { ReferenceModel} from "./ReferenceModel";
+import { EmploymentHistoryModel } from "./EmploymentHistoryModel";
 
 export const ApplicantModel = z.object({
     applicantId: z.number().positive(),

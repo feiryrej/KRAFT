@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { IndexController } from "../controllers";
-import {StatusCodes} from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 
 export const indexRouter = Router()
     .get('/', async (req: Request, res: Response) => {

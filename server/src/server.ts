@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import bodyParser from "body-parser";
-import {applicantRouter, indexRouter} from "./routes";
+import { applicantRouter, indexRouter } from "./routes";
 
 const app: Express =express()
 const PORT: number = 5000
