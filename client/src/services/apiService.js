@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 export class ApiService {
-    constructor(baseURL ='/api') {
-        this.baseURL = baseURL;
+    constructor() {
         this.api = axios.create({
-            baseURL: this.baseURL
+            baseURL: '/api'
         });
 
         this.api.defaults.headers.post['Content-Type'] = 'application/json';
@@ -15,6 +14,8 @@ export class ApiService {
             method,
             url,
             data
-        });
+        }).catch((error) => {
+            return Promise.reject(error);
+        })
     }
 }
