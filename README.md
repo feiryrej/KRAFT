@@ -1,2 +1,0 @@
-# KRAFT
-Our Database Frontend
