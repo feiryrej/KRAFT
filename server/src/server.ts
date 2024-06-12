@@ -1,13 +1,13 @@
-import express, {Express, Request, Response} from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
+import { indexRouter } from "./routes";
 
 const app: Express =express()
 const PORT: number = 5000
 app.use(cors())
+app.use(express.json())
 
-app.get('/', async (req: Request, res: Response) => {
-    res.json({ message: "Server is running"})
-})
+app.use('/', indexRouter)
 
 function logServerDetails(port: number) {
     console.log(`\nServer is running`)
