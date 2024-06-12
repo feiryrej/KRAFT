@@ -1,14 +1,82 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model applicant {
+  applicant_id      String              @id
+  name              String
+  sss_number        String
+  address           String
+  phone_no          String
+  email             String              @unique(map: "Applicant_email_key")
+  application       application[]
+  educationhistory  educationhistory[]
+  employmenthistory employmenthistory[]
+  reference         reference[]
+}
+
+model application {
+  application_id               String    @id
+  applicant_id                 String
+  position                     String
+  special_study_subject        String?
+  special_training             String?
+  special_skills               String?
+  date_of_application          DateTime? @db.Date
+  date_can_start               DateTime? @db.Date
+  salary_desired               Int
+  is_currently_employed        Boolean
+  can_inquire_current_employer Boolean?
+  has_applied_before           Boolean
+  applied_before_where         String?
+  applied_before_when          DateTime?
+  applicant                    applicant @relation(fields: [applicant_id], references: [applicant_id], map: "Application_applicant_id_fkey")
+
+  @@index([applicant_id], map: "Application_applicant_id_fkey")
+}
+
+model educationhistory {
+  education_history_id  String    @id
+  applicant_id          String
+  education_level       String
+  education_school_name String
+  education_location    String
+  education_years       String
+  has_graduated         Boolean
+  education_subjects    String
+  applicant             applicant @relation(fields: [applicant_id], references: [applicant_id], map: "EducationHistory_applicant_id_fkey")
+
+  @@index([applicant_id], map: "EducationHistory_applicant_id_fkey")
+}
+
+model employmenthistory {
+  employment_history_id         String    @id
+  applicant_id                  String
+  employment_start_date         DateTime? @db.Date
+  employment_end_date           DateTime? @db.Date
+  employment_company_name       String
+  employment_company_address    String
+  employment_salary             Int
+  employment_position           String
+  employment_reason_for_leaving String
+  applicant                     applicant @relation(fields: [applicant_id], references: [applicant_id], map: "EmploymentHistory_applicant_id_fkey")
+
+  @@index([applicant_id], map: "EmploymentHistory_applicant_id_fkey")
+}
+
+model reference {
+  reference_id          String    @id
+  applicant_id          String
+  reference_name        String
+  reference_phone_no    String
+  reference_profession  String
+  reference_years_known Int
+  applicant             applicant @relation(fields: [applicant_id], references: [applicant_id], map: "Reference_applicant_id_fkey")
+
+  @@index([applicant_id], map: "Reference_applicant_id_fkey")
 }
