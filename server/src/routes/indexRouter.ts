@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { IndexController } from "../controllers";
+import {StatusCodes} from "http-status-codes";
 
 export const indexRouter = Router()
     .get('/', async (req, res) => {
         try {
-            res.status(200).json(await IndexController.index())
+            res.status(StatusCodes.OK).json(await IndexController.index())
         } catch (error) {
-            res.status(500).json({ message: error })
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error })
         }
     })
