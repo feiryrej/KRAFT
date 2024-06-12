@@ -1,3 +1,1 @@
-export class ApplicantController {
-
-}
+export class ApplicantController {}

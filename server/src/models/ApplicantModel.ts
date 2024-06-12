@@ -1,8 +1,8 @@
-import { z } from 'zod'
-import { JobApplicationModel } from "./JobApplicationModel";
-import { EducationHistoryModel } from "./EducationHistoryModel";
-import { ReferenceModel} from "./ReferenceModel";
-import { EmploymentHistoryModel } from "./EmploymentHistoryModel";
+import { z } from 'zod';
+import { JobApplicationModel } from './JobApplicationModel';
+import { EducationHistoryModel } from './EducationHistoryModel';
+import { ReferenceModel } from './ReferenceModel';
+import { EmploymentHistoryModel } from './EmploymentHistoryModel';
 
 export const ApplicantModel = z.object({
     applicantId: z.number().positive(),
@@ -14,10 +14,19 @@ export const ApplicantModel = z.object({
     references: z.array(ReferenceModel),
     employmentHistory: z.array(EmploymentHistoryModel),
     educationHistory: z.array(EducationHistoryModel),
-    jobApplications: z.array(JobApplicationModel),
-})
+    jobApplications: z.array(JobApplicationModel)
+});
 
-export const CreateApplicantModel = ApplicantModel.omit({ applicantId: true, jobApplications: true })
-export const UpdateApplicantModel = ApplicantModel.omit({ jobApplications: true , employmentHistory: true, references: true, educationHistory: true, applicantId: true})
+export const CreateApplicantModel = ApplicantModel.omit({
+    applicantId: true,
+    jobApplications: true
+});
+export const UpdateApplicantModel = ApplicantModel.omit({
+    jobApplications: true,
+    employmentHistory: true,
+    references: true,
+    educationHistory: true,
+    applicantId: true
+});
 
-export type Applicant = z.infer<typeof ApplicantModel>
+export type Applicant = z.infer<typeof ApplicantModel>;

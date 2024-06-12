@@ -1,21 +1,21 @@
-import axios from 'axios';
+import axios from "axios";
 
 export class ApiService {
-    constructor() {
-        this.api = axios.create({
-            baseURL: '/api'
-        });
+  constructor() {
+    this.api = axios.create({
+      baseURL: "/api",
+    });
 
-        this.api.defaults.headers.post['Content-Type'] = 'application/json';
-    }
+    this.api.defaults.headers.post["Content-Type"] = "application/json";
+  }
 
-    request(method, url, data) {
-        return this.api({
-            method,
-            url,
-            data
-        }).catch((error) => {
-            return Promise.reject(error);
-        })
-    }
+  request(method, url, data) {
+    return this.api({
+      method,
+      url,
+      data,
+    }).catch((error) => {
+      return Promise.reject(error);
+    });
+  }
 }
