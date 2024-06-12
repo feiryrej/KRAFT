@@ -1,13 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { validateData } from '../middlewares/validatationMiddleware';
-import {
-    Applicant,
-    CreateApplicantModel,
-    UpdateApplicantModel
-} from '../models';
+import { applicantSchema } from '../models';
 import { StatusCodes } from 'http-status-codes';
 
-const asi: Applicant = {
+const asi: applicantSchema.Applicant = {
     address: 'Manila City',
     applicantId: 1,
     educationHistory: [],
@@ -24,7 +20,7 @@ export const applicantRouter: Router = Router()
     .get(
         '/getApplicants',
         async (req: Request, res: Response): Promise<void> => {
-            const applicants: Applicant[] = [];
+            const applicants: applicantSchema.Applicant[] = [];
             res.json({
                 message: 'Applicants retrieved successfully',
                 applicants: applicants
@@ -34,7 +30,7 @@ export const applicantRouter: Router = Router()
     .get(
         '/getApplicant/:id',
         async (req: Request, res: Response): Promise<void> => {
-            const applicant: Applicant = asi;
+            const applicant: applicantSchema.Applicant = asi;
             res.json({
                 message: 'Applicant retrieved successfully',
                 applicant: applicant
@@ -43,7 +39,7 @@ export const applicantRouter: Router = Router()
     )
     .post(
         '/createApplicant',
-        validateData(CreateApplicantModel),
+        validateData(applicantSchema.CreateApplicant),
         async (req: Request, res: Response): Promise<void> => {
             res.json({
                 message: 'Applicant created successfully',
@@ -53,7 +49,7 @@ export const applicantRouter: Router = Router()
     )
     .put(
         '/updateApplicant/:id',
-        validateData(UpdateApplicantModel),
+        validateData(applicantSchema.UpdateApplicant),
         async (req: Request, res: Response): Promise<void> => {
             res.json({
                 message: 'Applicant updated successfully',

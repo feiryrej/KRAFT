@@ -1,13 +1,4 @@
-import {
-    ApplicantModel,
-    Applicant,
-    CreateApplicantModel,
-    UpdateApplicantModel
-} from './ApplicantModel';
+import * as applicantSchema from './ApplicantModel';
+import * as referenceSchema from './ReferenceModel';
 
-export {
-    ApplicantModel,
-    Applicant,
-    CreateApplicantModel,
-    UpdateApplicantModel
-};
+export { applicantSchema, referenceSchema };

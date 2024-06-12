@@ -8,4 +8,9 @@ export const ReferenceModel = z.object({
     referenceYearsKnown: z.number().positive()
 });
 
+export const AddReference = ReferenceModel.omit({ referenceId: true });
+export const UpdateReference = ReferenceModel.omit({
+    applicantId: true,
+    referenceId: true
+});
 export type Reference = z.infer<typeof ReferenceModel>;

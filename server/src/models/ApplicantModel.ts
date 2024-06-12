@@ -17,11 +17,11 @@ export const ApplicantModel = z.object({
     jobApplications: z.array(JobApplicationModel)
 });
 
-export const CreateApplicantModel = ApplicantModel.omit({
+export const CreateApplicant = ApplicantModel.omit({
     applicantId: true,
     jobApplications: true
 });
-export const UpdateApplicantModel = ApplicantModel.omit({
+export const UpdateApplicant = ApplicantModel.omit({
     jobApplications: true,
     employmentHistory: true,
     references: true,
