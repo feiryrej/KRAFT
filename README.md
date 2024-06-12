@@ -7,14 +7,28 @@
     cd client
     npm install
 ```
-- Root folder
+- For server folder
 ```bash
+    cd server
     npm install
 ```
 
 ### 2. Start Development
+- For client folder
 ```bash
-npm run dev
+    cd client
+    npm run dev
 ```
-Note: Should be in the root folder we will run concurrently the client and server.
+- For server folder
+```bash
+    cd server
+    npm run dev
+```
+
+### 3. Migrating Database Schema (Prisma)
+- For server folder
+```bash
+    cd server
+    npm run migrate -- <migration_name>
+```
 
