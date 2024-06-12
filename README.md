@@ -13,7 +13,14 @@
     npm install
 ```
 
-### 2. Start Development
+### 2. Create .env file
+- For server folder
+- Create a .env file in server folder and add the following environment variables.
+```json
+DATABASE_URL="mysql://root:password@localhost:3306/kraft"
+```
+
+### 3. Start Development
 - For client folder
 ```bash
     cd client
@@ -31,7 +38,7 @@ or Run both from server folder
     npm run:dev
 ```
 
-### 3. Migrating Database Schema (Prisma)
+### 4. Migrating Database Schema (Prisma)
 - For server folder
 ```bash
     cd server
