@@ -7,6 +7,19 @@ import {
 } from '../models';
 import { StatusCodes } from 'http-status-codes';
 
+const asi: Applicant = {
+    address: 'Manila City',
+    applicantId: 1,
+    educationHistory: [],
+    email: 'isaeusguiang@gmail.com',
+    employmentHistory: [],
+    jobApplications: [],
+    name: 'Isaeus B. Guiang',
+    phoneNumber: 'not available',
+    references: [],
+    sssNumber: 'not available'
+};
+
 export const applicantRouter: Router = Router()
     .get(
         '/getApplicants',
@@ -21,18 +34,7 @@ export const applicantRouter: Router = Router()
     .get(
         '/getApplicant/:id',
         async (req: Request, res: Response): Promise<void> => {
-            const applicant: Applicant = {
-                address: '',
-                applicantId: 0,
-                educationHistory: [],
-                email: '',
-                employmentHistory: [],
-                jobApplications: [],
-                name: '',
-                phoneNumber: '',
-                references: [],
-                sssNumber: ''
-            };
+            const applicant: Applicant = asi;
             res.json({
                 message: 'Applicant retrieved successfully',
                 applicant: applicant
