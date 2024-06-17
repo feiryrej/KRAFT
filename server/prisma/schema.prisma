@@ -6,3 +6,69 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model applicant {
+  Applicant_ID String @id @db.Char(13)
+  Name         String @db.VarChar(60)
+  SSS_Number   String @db.Char(12)
+  Address      String @db.VarChar(60)
+  Phone_No     String @db.Char(11)
+  Email        String @db.VarChar(50)
+}
+
+model education_history {
+  Education_History_ID  String  @id @db.Char(14)
+  Applicant_ID          String  @db.Char(13)
+  Education_School_Name String  @db.VarChar(50)
+  Education_Level       String  @db.VarChar(20)
+  Education_Location    String  @db.VarChar(60)
+  Education_Years       String  @db.Char(9)
+  has_Graduated         Boolean
+  Education_Subjects    String  @db.VarChar(50)
+
+  @@index([Applicant_ID], map: "FK_Applicant_ID_2")
+}
+
+model employment_history {
+  Employment_History_ID         String    @id @db.Char(14)
+  Applicant_ID                  String    @db.Char(13)
+  Employment_Start_Date         DateTime  @db.Date
+  Employment_End_Date           DateTime? @db.Date
+  Employment_Company_Name       String    @db.VarChar(50)
+  Employment_Company_Address    String    @db.VarChar(60)
+  Employment_Salary             Int
+  Employment_Position           String    @db.VarChar(50)
+  Employment_Reason_For_Leaving String    @db.VarChar(50)
+
+  @@index([Applicant_ID], map: "FK_Applicant_3")
+}
+
+model job_application {
+  Application_ID               String    @id @db.Char(13)
+  Applicant_ID                 String    @db.Char(13)
+  Position                     String    @db.VarChar(50)
+  Date_of_Application          DateTime  @db.Date
+  Date_can_Start               DateTime  @db.Date
+  Salary_Desired               Int
+  is_Currently_Employed        Boolean
+  can_Inquire_Current_Employer Boolean?
+  has_Applied_Before           Boolean
+  Applied_Before_Where         String?   @db.VarChar(60)
+  Applied_Before_When          DateTime? @db.Date
+  Special_Study_Subject        String?   @db.VarChar(50)
+  Special_Training             String?   @db.VarChar(100)
+  Special_Skills               String?   @db.VarChar(100)
+
+  @@index([Applicant_ID], map: "FK_Applicant_ID_1")
+}
+
+model reference {
+  Reference_ID          String @id @db.Char(15)
+  Applicant_ID          String @db.Char(13)
+  Reference_Name        String @db.VarChar(60)
+  Reference_PhoneNo     String @db.Char(11)
+  Reference_Profession  String @db.VarChar(50)
+  Reference_Years_Known Int
+
+  @@index([Applicant_ID], map: "FK_Applicant_4")
+}
